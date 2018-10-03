@@ -10,6 +10,9 @@ public class Box
 	
 	public Box(double height, double width, double depth, boolean full)
 	{
-		
+		this.height = height;
+		this.width = width;
+		this.depth = depth;
+		this.full = full;
 	}
 }
