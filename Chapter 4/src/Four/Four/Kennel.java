@@ -11,6 +11,6 @@ public class Kennel
 		doggo2.setDogAge(10);
 		
 		System.out.println("Dog1 Age + Name: " + doggo1);
-		System.out.println("Dog2 Age + Name: " + doggo2.getDogAge() + ", " + doggo2.getDogName());
+		System.out.println("Dog2 Age + Name: " + doggo2.getDogName() + " is " + doggo2.getDogAge() + " years old, and " + doggo2.convertDogHumanAge() +  " years old in human years.");
 	}
 }
