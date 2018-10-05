@@ -56,6 +56,6 @@ public class Flight
 	// Create toString.
 	public String toString()
 	{
-		return "Flight: " + flightName + " " + flightNumber + "";
+		return "Flight: " + flightName + " " + flightNumber + " traveling from " + origin + " to " + destination;
 	}
 }
