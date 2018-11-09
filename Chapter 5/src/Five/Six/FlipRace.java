@@ -52,6 +52,7 @@ public class FlipRace
 		} while (winner == 0);
 		
 		// Print stats to user.
+		System.out.println();
 		System.out.println("Winner: " + result);
 		System.out.println("Total number of rounds: " + numberOfFlips);
 		System.out.println("------Stats for coin1-------");

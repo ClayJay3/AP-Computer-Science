@@ -5,6 +5,9 @@ import java.util.Random;
 public class logic
 {
 	// Create objects and variables.
+	private int wins = 0;
+	private int losses = 0;
+	private int ties = 0;
 	private String computerValue = "";
 	private String humanValue = "";
 	Random rand = new Random();
@@ -38,64 +41,82 @@ public class logic
 	{
 		// Create variables.
 		String winner = "";
-		humanValue = humanValue.toLowerCase();
-		
 		
 		// Determine winner. (rockToScissors, scissorsToPaper, paperToRock)
-		if (humanValue == "rock" && computerValue == "scissors")
+		if (humanValue.contentEquals("rock") && computerValue == "scissors")
 		{
 			winner = "human";
+			wins ++;
 		}
 		else
 		{
-			if (computerValue == "paper")
+			if (humanValue.contentEquals("rock") && computerValue == "paper")
 			{
 				winner = "computer";
+				losses ++;
 			}
-			if (humanValue == computerValue)
+			if (humanValue.contentEquals("rock") && computerValue == "rock")
 			{
 				winner = "tie";
+				ties ++;
 			}
 		}
-		if (humanValue == "paper" && computerValue == "rock")
+		if (humanValue.contentEquals("paper") && computerValue == "rock")
 		{
 			winner = "human";
+			wins ++;
 		}
 		else
 		{
-			if (computerValue == "scissors")
+			if (humanValue.contentEquals("paper") && computerValue == "scissors")
 			{
 				winner = "computer";
+				losses ++;
 			}
-			if (humanValue == computerValue)
+			if (humanValue.contentEquals("paper") && computerValue == "paper")
 			{
 				winner = "tie";
+				ties ++;
 			}
 		}
-		if (humanValue == "scissors" && computerValue == "paper")
+		if (humanValue.contentEquals("scissors") && computerValue == "paper")
 		{
+
 			winner = "human";
+			wins ++;
 		}
 		else
 		{
-			if (computerValue == "rock")
+			if (humanValue.contentEquals("scissors") && computerValue == "rock")
 			{
 				winner = "computer";
+				losses ++;
 			}
-			if (humanValue == computerValue)
+			if (humanValue.contentEquals("scissors") && computerValue == "scissors")
 			{
 				winner = "tie";
+				ties ++;
 			}
 		}
 		
 		return winner;
 	}
 	
-	// Setters
-	
 	// Getters
 	public String getComputerValue()
 	{
 		return computerValue;
+	}
+	public int getWins()
+	{
+		return wins;
+	}
+	public int getLosses()
+	{
+		return losses;
+	}
+	public int getTies()
+	{
+		return ties;
 	}
 }
