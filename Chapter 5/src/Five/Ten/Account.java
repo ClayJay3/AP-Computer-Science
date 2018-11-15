@@ -8,7 +8,7 @@ public class Account
    private long acctNumber;
    private double balance;
    private String name;
-   private String error;
+   private String error = "";
 
    //-----------------------------------------------------------------
    //  Sets up the account by defining its owner, account number,
@@ -16,9 +16,17 @@ public class Account
    //-----------------------------------------------------------------
    public Account(String owner, long account, double initial)
    {
-      name = owner;
-      acctNumber = account;
-      balance = initial;
+	  if (account < 0 || initial < 0)
+	  {
+		  error = "ERROR: Initial deposit invalid!";
+	  }
+	  else
+	  {
+		  error = "";
+		  name = owner;
+	      acctNumber = account;
+	      balance = initial;
+	  }
    }
 
    //-----------------------------------------------------------------
@@ -34,6 +42,7 @@ public class Account
 	  }
 	  else
 	  {
+		  error = "";
 		  balance = balance + amount;
 	      return balance;
 	  }
@@ -52,6 +61,7 @@ public class Account
 	  }
 	  else
 	  {
+		  error = "";
 		  balance = balance - amount - fee;
 	      return balance;
 	  }
@@ -78,7 +88,10 @@ public class Account
    //	Returns the error (if any) witch results from an invalid
    //	value being passed into any of the above methods.
    //-----------------------------------------------------------------
-
+   public String getError()
+   {
+	   return error;
+   }
    //-----------------------------------------------------------------
    //  Returns a one-line description of the account as a string.
    //-----------------------------------------------------------------

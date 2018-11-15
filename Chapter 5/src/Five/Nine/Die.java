@@ -21,7 +21,7 @@ public class Die
 	// Create setters.
 	public void setFaceValue(int value)
 	{
-		if (value < 6 && value > 1)
+		if (value <= 6 && value >= 1)
 		{
 			faceValue = value;
 		}
