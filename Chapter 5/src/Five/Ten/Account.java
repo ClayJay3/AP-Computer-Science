@@ -54,9 +54,9 @@ public class Account
    //-----------------------------------------------------------------
    public double withdraw(double amount, double fee)
    {
-	  if (amount > balance)
+	  if (amount > balance || !(amount > 0))
 	  {
-		  error = "ERROR: Withdraw amount is greater than balance!";
+		  error = "ERROR: Withdraw amount is greater than balance or is not greater than 0!";
 		  return balance;
 	  }
 	  else
