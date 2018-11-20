@@ -22,7 +22,7 @@ public class FindPunctuation
 			for (Character number : line.toCharArray())
 			{
 				number.toString();
-				if (number.toString().matches("[.,!?@#$%^&*()\'\"\\/-]"))
+				if (number.toString().matches("[.,!?@#$%^&*()\'\"/\\-]"))
 				{
 					System.out.println(number);
 					switch (number)

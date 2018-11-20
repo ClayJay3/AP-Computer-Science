@@ -18,11 +18,15 @@ public class TestDie
 		
 		while (keepLooping)
 		{
-			System.out.println("Enter a new face value:  (enter 0 to stop the program)");
+			System.out.println("Enter a new face value from 1 to 6:  (enter 0 to stop the program)");
 			faceValue = userInput.nextInt();
 			keepLooping = (faceValue == 0) ? false : true;
 			die.setFaceValue(faceValue);
-			System.out.println("Die value set to: " + die.getFaceValue());
+			if (!die.getError().contentEquals(""))
+			{
+				System.out.println(die.getError());
+			}
+			System.out.println("Die value is: " + die.getFaceValue());
 		}
 	}
 }

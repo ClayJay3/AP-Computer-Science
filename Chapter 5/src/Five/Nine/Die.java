@@ -4,6 +4,7 @@ public class Die
 {
 	private final int MAX = 6;
 	private int faceValue;
+	private String error = "";
 	
 	// Create Constructor
 	public Die()
@@ -23,7 +24,15 @@ public class Die
 	{
 		if (value <= 6 && value >= 1)
 		{
+			error = "";
 			faceValue = value;
+		}
+		else
+		{
+			if (value != 0)
+			{
+				error = "ERROR: Incorrect face value of dice (1-6)";
+			}
 		}
 	}
 	
@@ -31,6 +40,18 @@ public class Die
 	public int getFaceValue()
 	{
 		return faceValue;
+	}
+	public String getError()
+	{
+		if (error == "")
+		{
+			error = "";
+			return error;
+		}
+		else
+		{
+			return error;
+		}
 	}
 	
 	// Create toString.
