@@ -4,7 +4,7 @@ public class Stars4
 {
 	public static void main(String[] args)
 	{
-		int loopCounter = 100;
+		int loopCounter = 10;
 		int starCounter = 0;
 		int spaceCounter = 0;
 		int reverseLoopCounter = 0;

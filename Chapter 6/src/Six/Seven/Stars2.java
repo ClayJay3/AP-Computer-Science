@@ -5,7 +5,7 @@ public class Stars2
 	public static void main(String[] args)
 	{
 		// Create variables.
-		int loopCount = 100;
+		int loopCount = 10;
 		int starCounter = 1;
 				
 		// Do math and print the number of stars.
