@@ -15,14 +15,13 @@ public class Coin implements Lockable
 	// Object constructor
 	public Coin(int id)
 	{
-		//flip();
 		this.id = id;
 	}
 	
 	// Method that flips the coin.
 	public void flip()
 	{
-		if (isLocked == false)
+		if (!isLocked)
 		{
 			face = (int) (Math.random() * 2);
 			
@@ -37,31 +36,56 @@ public class Coin implements Lockable
 				flipsInRow(true);
 			}
 		}
+		else
+		{
+			System.out.println("ERROR: This object if locked");
+		}
 	}
 	
 	// Method that increments the number of heads in a row.
 	private void flipsInRow(boolean reset)
 	{
-		if (reset)
+		if (!isLocked)
 		{
-			numberOfFlipsInRow = 0;
+			if (reset)
+			{
+				numberOfFlipsInRow = 0;
+			}
+			else
+			{
+				numberOfFlipsInRow ++;
+			}
 		}
 		else
 		{
-			numberOfFlipsInRow ++;
+			System.out.println("ERROR: This object is locked");
 		}
 	}
 	
 	// Method that counts total number of heads.
 	private void countHeads()
 	{
-		numberOfHeads ++;
+		if (!isLocked)
+		{
+			numberOfHeads ++;
+		}
+		else
+		{
+			System.out.println("ERROR: This object is locked");
+		}
 	}
 	
 	// Method that counts total number of tails.
 	private void countTails()
 	{
-		numberOfTails ++;
+		if (!isLocked)
+		{
+			numberOfTails ++;
+		}
+		else
+		{
+			System.out.println("ERROR: This object is locked");
+		}
 	}
 
 	public void lock(int keyPass) 
@@ -70,6 +94,10 @@ public class Coin implements Lockable
 		{
 			isLocked = true;
 		}
+		else
+		{
+			System.out.println("ERROR: Incorrect keyPass");
+		}
 	}
 	
 	public void unlock(int keyPass) 
@@ -77,6 +105,10 @@ public class Coin implements Lockable
 		if (keyPass == this.keyPass)
 		{
 			isLocked = false;
+		}
+		else
+		{
+			System.out.println("ERROR: Incorrect keyPass");
 		}
 	}
 	
@@ -88,23 +120,63 @@ public class Coin implements Lockable
 	// Getters
 	public boolean isHeads()
 	{
-		return (face == HEADS);
+		if (!isLocked)
+		{
+			return (face == HEADS);
+		}
+		else
+		{
+			System.out.println("ERROR: This object is locked");
+			return false;
+		}
 	}
 	public int getFlipsInRow()
 	{
-		return numberOfFlipsInRow;
+		if (!isLocked)
+		{
+			return numberOfFlipsInRow;
+		}
+		else
+		{
+			System.out.println("ERROR: This object is locked");
+			return 0;
+		}
 	}
 	public int getNumberOfHeads()
 	{
-		return numberOfHeads;
+		if (!isLocked)
+		{
+			return numberOfHeads;
+		}
+		else
+		{
+			System.out.println("ERROR: This object is locked");
+			return 0;
+		}
 	}
 	public int getNumberOfTails()
 	{
-		return numberOfTails;
+		if (!isLocked)
+		{
+			return numberOfTails;
+		}
+		else
+		{
+			System.out.println("ERROR: This object is locked");
+			return 0;
+		}
 	}
 	public int getID()
 	{
-		return id;
+		if (!isLocked)
+		{
+			return id;
+		}
+		else
+		{
+			System.out.println("ERROR: This object is locked");
+			return 0;
+		}
 	}
 	public boolean locked() 
 	{
@@ -114,17 +186,24 @@ public class Coin implements Lockable
 	// Returns the current face of the coin as a string.
 	public String toString()
 	{
-		String faceName;
-		
-		if (face == HEADS)
+		if (!isLocked)
 		{
-			faceName = "Heads";
+			String faceName;
+			
+			if (face == HEADS)
+			{
+				faceName = "Heads";
+			}
+			else 
+			{
+				faceName = "Tails";
+			}
+			
+			return faceName;
 		}
-		else 
+		else
 		{
-			faceName = "Tails";
+			return null;
 		}
-		
-		return faceName;
 	}
 }
