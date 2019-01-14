@@ -29,9 +29,9 @@ public class Yahtzee
 		boolean stop = false;
 		boolean keepPlaying = true;
 		Scanner userInput = new Scanner(System.in);
-
+		
 		// Keep playing until game ends or user stops.
-		while (keepPlaying && gameCounter < 5)
+		while (keepPlaying && gameCounter <= 5)
 		{
 			do
 			{
@@ -52,7 +52,7 @@ public class Yahtzee
 							{
 								if (die.getID() < otherDie.getID())
 								{
-									if (die.getFaceValue() == otherDie.getFaceValue())
+									if (die.getFaceValue() == otherDie.getFaceValue() && (roundCounter == 0 || pointsThisRound == 0))
 									{
 										while (!stop)
 										{
@@ -66,29 +66,41 @@ public class Yahtzee
 						}
 						dicePairs.add(pairs);
 						stop = false;
+						
+						// Add second round dice to pairs.
+						if (die.getFaceValue() == largestPair && (roundCounter == 1 || pointsThisRound != 0))
+						{
+							numberOfMatchingDice ++;
+						}
 					}
 				}
-				
+
 				// Print the dice pairs and keep to largest pair.
 				System.out.println();
 				System.out.println("Dice pairs found by the program:");
+				int diceScore = 0;
 				for (ArrayList pairArray : dicePairs)
 				{
 					for (Object number : pairArray)
 					{
-						if (Integer.parseInt(number.toString()) > largestPair)
+						if (roundCounter == 0 || pointsThisRound == 0)
 						{
-							largestPair = Integer.parseInt(number.toString());
-							System.out.println(pairArray);
-							numberOfMatchingDice = pairArray.size();
-							for (int i = 0; i < numberOfMatchingDice; i++)
+							// Find and determine the largest pair.
+							if ((pairArray.size() * (int) number) > diceScore)
 							{
-								cupOfDice.get(i).lock(true);
+								diceScore = (pairArray.size() * (int) number);
+								largestPair = (int) number;
+								numberOfMatchingDice = pairArray.size();
+								System.out.println(pairArray);
+								for (int i = 0; i < numberOfMatchingDice; i++)
+								{
+									cupOfDice.get(i).lock(true);
+								}
 							}
 						}
 					}
 				}
-				
+
 				// Add points and increment counters.
 				pointsThisRound += largestPair * numberOfMatchingDice;
 				roundCounter ++;
@@ -100,25 +112,48 @@ public class Yahtzee
 				System.out.println();
 				
 				// Reset values for next round.
-				largestPair = 0;
 				numberOfMatchingDice = 0;
 				dicePairs.clear();
 			} while (roundCounter < 2);
 			
 			// Add points to total game score and reset stuff.
-			totalScore =+ pointsThisRound;
+			totalScore += pointsThisRound * 10;
 			pointsThisRound = 0;
+			largestPair = 0;
 			roundCounter = 0;
 			for (Die die : cupOfDice) { die.lock(false); }
 			
-			// Ask the user if they want to keep playing.
-			System.out.println();
-			System.out.println();
-			System.out.println("Round Number: " + gameCounter);
-			System.out.println("Total Score for the Game: " + totalScore);
-			System.out.println("Do you want to keep playing? (y/n)");
-			keepPlaying = (userInput.nextLine().equalsIgnoreCase("y")) ? true : false;
-			
+			// Check if the game is over and ask the user if they want to keep playing.
+			if (totalScore < 1000 && gameCounter < 5)
+			{
+				System.out.println();
+				System.out.println();
+				System.out.println("Round Number: " + gameCounter);
+				System.out.println("Total Score for the Game: " + totalScore);
+				System.out.println("Do you want to keep playing? (y/n)");
+				keepPlaying = (userInput.nextLine().equalsIgnoreCase("y")) ? true : false;
+				gameCounter ++;
+			}
+			else
+			{
+				if (totalScore >= 1000)
+				{
+					System.out.println();
+					System.out.println();
+					System.out.println("You won!");
+					System.out.println("Total Points: " + totalScore);
+					System.out.println("Rounds Played: " + gameCounter);
+					keepPlaying = false;
+				}
+				else
+				{
+					System.out.println();
+					System.out.println();
+					System.out.println("You lost!");
+					System.out.println("Total Points: " + totalScore);
+					System.out.println("Rounds Played: " + gameCounter);
+				}
+			}
 		}
 	}
 }
