@@ -39,7 +39,7 @@ public class Yahtzee
 				System.out.println("Hit enter to roll the 5 dice.");
 				userInput.nextLine();
 				for (Die die : cupOfDice) { die.roll(); System.out.println("Die" + die.getID() + ": " + die.getFaceValue()); }
-				
+
 				// Determine the matching pairs.
 				for (Die die : cupOfDice)
 				{
@@ -52,7 +52,7 @@ public class Yahtzee
 							{
 								if (die.getID() < otherDie.getID())
 								{
-									if (die.getFaceValue() == otherDie.getFaceValue() && (roundCounter == 0 || pointsThisRound == 0))
+									if (die.getFaceValue() == otherDie.getFaceValue() && roundCounter == 0)
 									{
 										while (!stop)
 										{
@@ -68,7 +68,7 @@ public class Yahtzee
 						stop = false;
 						
 						// Add second round dice to pairs.
-						if (die.getFaceValue() == largestPair && (roundCounter == 1 || pointsThisRound != 0))
+						if (die.getFaceValue() == largestPair && roundCounter == 1)
 						{
 							numberOfMatchingDice ++;
 						}
@@ -83,7 +83,7 @@ public class Yahtzee
 				{
 					for (Object number : pairArray)
 					{
-						if (roundCounter == 0 || pointsThisRound == 0)
+						if (roundCounter == 0)
 						{
 							// Find and determine the largest pair.
 							if ((pairArray.size() * (int) number) > diceScore)
@@ -99,6 +99,19 @@ public class Yahtzee
 							}
 						}
 					}
+				}
+				
+				// If no pairs are found and its the first round pick the largest single die.
+				if (largestPair == 0 && roundCounter == 0)
+				{
+					for (Die die : cupOfDice)
+					{
+						if (die.getFaceValue() > largestPair)
+						{
+							largestPair = die.getFaceValue();
+						}
+					}
+					numberOfMatchingDice ++;
 				}
 
 				// Add points and increment counters.
@@ -144,6 +157,7 @@ public class Yahtzee
 					System.out.println("Total Points: " + totalScore);
 					System.out.println("Rounds Played: " + gameCounter);
 					keepPlaying = false;
+					gameCounter ++;
 				}
 				else
 				{
@@ -152,6 +166,7 @@ public class Yahtzee
 					System.out.println("You lost!");
 					System.out.println("Total Points: " + totalScore);
 					System.out.println("Rounds Played: " + gameCounter);
+					gameCounter ++;
 				}
 			}
 		}
