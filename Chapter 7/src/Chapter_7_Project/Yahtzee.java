@@ -88,6 +88,10 @@ public class Yahtzee
 							// Find and determine the largest pair.
 							if ((pairArray.size() * (int) number) > diceScore)
 							{
+								for (Die die : cupOfDice)
+								{
+									die.lock(false);
+								}
 								diceScore = (pairArray.size() * (int) number);
 								largestPair = (int) number;
 								numberOfMatchingDice = pairArray.size();
@@ -112,6 +116,7 @@ public class Yahtzee
 						}
 					}
 					numberOfMatchingDice ++;
+					die1.lock(true);
 				}
 
 				// Add points and increment counters.
