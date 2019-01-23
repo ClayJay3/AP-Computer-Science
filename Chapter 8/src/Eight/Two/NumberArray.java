@@ -1,4 +1,4 @@
-package Eight.One;
+package Eight.Two;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,15 +12,15 @@ public class NumberArray
 		int temp = 0;
 		int[] numberTally = new int[51];
 		boolean keepScanning = true;
-		Scanner fileInput = new Scanner(new File("/root/Documents/AP-Computer-Science/Chapter 8/src/Eight/One/numbers.inp"));
+		Scanner fileInput = new Scanner(new File("/root/Documents/AP-Computer-Science/Chapter 8/src/Eight/Two/numbers.inp"));
 		
 		// Find numbers and occurrences.
 		while (fileInput.hasNextLine() && keepScanning)
 		{
 			temp = fileInput.nextInt();
-			if (temp <= 50 && temp >= 0)
+			if (temp <= 25 && temp >= -25)
 			{
-				numberTally[temp] ++;
+				numberTally[temp + 25] ++;
 			}
 			else
 			{
@@ -34,7 +34,7 @@ public class NumberArray
 		{
 			if (numberTally[i] >= 1)
 			{
-				System.out.println(i + " occurred " + numberTally[i] + " times");
+				System.out.println((i - 25) + " occurred " + numberTally[i] + " times");
 			}
 		}
 	}
