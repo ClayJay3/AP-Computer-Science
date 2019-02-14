@@ -40,13 +40,15 @@ public class DeckOfCards
 	{
 		// Create variables. 
 		int index = -1;
+		int counter = 0;
 		
 		for (Card card : cardPack)
 		{
 			if (card.getCardFace().contentEquals(value + suit))
 			{
-				index = card.getIndex();
+				index = counter;
 			}
+			counter ++;
 		}
 		
 		return index;
@@ -71,6 +73,10 @@ public class DeckOfCards
 	// Deal the card.
 	public void dealCard(String value, char suit)
 	{
+		// Create variables.
+		int number = 0;
+		
+		// Deal the card
 		for (Card card : cardPack)
 		{
 			if (card.getCardFace().contentEquals(value + suit))
@@ -78,6 +84,17 @@ public class DeckOfCards
 				card.dealCard();
 			}
 		}
+		
+		// Return cards left in the deck.
+		for (Card card : cardPack)
+		{
+			if (!card.cardIsDealt())
+			{
+				number ++;
+			}
+		}
+		System.out.println("Number of cards left in deck:" + "\n" + number);
+		System.out.println();
 	}
 	
 	// Return if the certain card is dealt.

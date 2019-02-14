@@ -66,6 +66,12 @@ public class AccountSystem
 		return serverName;
 	}
 	
+	// Get error.
+	public String getError(int index)
+	{
+		return customerAccounts[index].getError();
+	}
+	
 	// Print info about users.
 	public String toString()
 	{

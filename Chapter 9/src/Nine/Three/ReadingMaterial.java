@@ -7,16 +7,18 @@ public class ReadingMaterial
 	private double cost;
 	private String title;
 	private String topic;
+	private String author;
 	private String protagonist;
 	private String antagonist;
 	
 	// Constructor
-	public ReadingMaterial(int numberOfPages, double cost, String title, String topic, String protagonist, String antagonist)
+	public ReadingMaterial(int numberOfPages, double cost, String title, String topic, String author, String protagonist, String antagonist)
 	{
 		this.numberOfPages = numberOfPages;
 		this.cost = cost;
 		this.title = title;
 		this.topic = topic;
+		this.author = author;
 		this.protagonist = protagonist;
 		this.antagonist = antagonist;
 	}
@@ -40,9 +42,17 @@ public class ReadingMaterial
 	{
 		return topic;
 	}
+	public String getAuthor()
+	{
+		return author;
+	}
 	public String getProtagonist()
 	{
 		return protagonist;
+	}
+	public String getAntagonist()
+	{
+		return antagonist;
 	}
 	
 	/////////////////////////////////////////////////////////////
@@ -63,6 +73,10 @@ public class ReadingMaterial
 	public void setTopic(String topic)
 	{
 		this.topic = topic;
+	}
+	public void setAuthor(String author)
+	{
+		this.author = author;
 	}
 	public void setProtagonist(String protagonist)
 	{
