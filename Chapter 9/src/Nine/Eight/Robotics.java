@@ -1,0 +1,33 @@
+package Nine.Eight;
+
+public class Robotics extends Course
+{
+	/////////////////////////////////////////////////////////////
+	///           Create object variables.	                  ///
+	/////////////////////////////////////////////////////////////
+	private boolean isRobotComplete = false;
+	
+	/////////////////////////////////////////////////////////////
+	///           Object Constructor.		                  ///
+	/////////////////////////////////////////////////////////////
+	public Robotics(String title, int number, double time, String description, String department)
+	{
+		super(title, number, time, description, department);
+	}
+	
+	/////////////////////////////////////////////////////////////
+	///           Getters for object variables.               ///
+	/////////////////////////////////////////////////////////////
+	public boolean getIsRobotComplete()
+	{
+		return isRobotComplete;
+	}
+	
+	/////////////////////////////////////////////////////////////
+	///           Setters for object variables.               ///
+	/////////////////////////////////////////////////////////////
+	public void setIsRobotComplete(boolean isRobotComplete)
+	{
+		this.isRobotComplete = isRobotComplete;
+	}
+}
