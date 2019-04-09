@@ -3,8 +3,9 @@ package Twelve.Six;
 public class Queens
 {
 	// Create objects, variables, and arrays.
-	private int tried = 1;
-	private int queen = 8;
+	private final int TRIED = 1;
+	private final int QUEEN = 8;
+	private int queensPlaced = 0;
 	private int[][] chessBoard = {{0,0,0,0,0,0,0,0},
 								{0,0,0,0,0,0,0,0},
 								{0,0,0,0,0,0,0,0},
@@ -23,7 +24,39 @@ public class Queens
 		// Determines if this queens location is valid.
 		if (valid(row, column))
 		{
+			//Increment Queen counter.
+			queensPlaced ++;
 			
+			// Mark this cell as tried.
+			chessBoard[row][column] = TRIED;
+			
+			// If 8 queens have been placed then the problem is solved.
+			if (queensPlaced == 8)
+			{
+				done = true;
+			}
+			else
+			{
+				done = queen(row + 1, column);	// Move the next queen down one.
+				if (!done)
+				{
+					done = queen(row, column + 1); // Move the next queen to the right one.
+				}
+				if (!done)
+				{
+					done = queen(row - 1, column); // Move the next queen up one.
+				}
+				if(!done)
+				{
+					done = queen(row, column - 1); // Move the next queen to the left one.
+				}
+			}
+			
+			// If the solution has been found place the queens and print the board.
+			if (done)
+			{
+				chessBoard[row][column] = QUEEN;
+			}
 		}
 		
 		return done;
@@ -62,10 +95,33 @@ public class Queens
 			// Diagonally...
 			for (int i = 0; i < chessBoard.length; i++)
 			{
+				int j = 
+				int p = 
 				
+				if (chessBoard[row + i][column + i] != 0 && i != row && i != column)
+				{
+					isValid = false;
+				}
 			}
 		}
 
 		return isValid;
+	}
+	
+	// Object toString.
+	public String toString()
+	{
+		String result = "";
+		
+		for (int row = 0; row < chessBoard.length; row ++)
+		{
+			for (int column = 0; column < chessBoard[0].length; column ++)
+			{
+				result += chessBoard[row][column] + "";
+			}
+			result += "\n";
+		}
+		
+		return result;
 	}
 }
