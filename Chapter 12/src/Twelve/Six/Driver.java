@@ -6,8 +6,15 @@ public class Driver
 	{
 		Queens queens = new Queens();
 		
-		queens.queen(0, 0);
-		
-		System.out.println(queens);
+		if (queens.queen(0, 0))
+		{
+			System.out.println(queens);
+			System.out.println("Solution found!!!");
+		}
+		else
+		{
+			System.out.println(queens);
+			System.out.println("No solution has been found");
+		}
 	}
 }

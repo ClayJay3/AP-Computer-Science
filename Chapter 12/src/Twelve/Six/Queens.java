@@ -28,10 +28,12 @@ public class Queens
 			queensPlaced ++;
 			
 			// Mark this cell as tried.
-			System.out.println(row);
-			System.out.println(column);
-			System.out.println(queensPlaced);
 			chessBoard[row][column] = TRIED;
+			
+			// Print user info.
+			System.out.println("row: " + row);
+			System.out.println("column: " + column);
+			System.out.println("queens placed: " + queensPlaced);
 			
 			// If 8 queens have been placed then the problem is solved.
 			if (queensPlaced == 8)
@@ -40,18 +42,34 @@ public class Queens
 			}
 			else
 			{
-				done = queen(row + 1, column);	// Move the next queen down one.
+				done = queen(row + 2, column + 1);	// Move the next queen down and to the right.
 				if (!done)
 				{
-					done = queen(row, column + 1); // Move the next queen to the right one.
+					done = queen(row + 2, column - 1);	// Move the next queen down and to the left.
 				}
 				if (!done)
 				{
-					done = queen(row - 1, column); // Move the next queen up one.
+					done = queen(row + 1, column + 2);	// Move the next queen to the right and down.
 				}
-				if(!done)
+				if (!done)
 				{
-					done = queen(row, column - 1); // Move the next queen to the left one.
+					done = queen(row - 1, column + 2);	// Move the next queen to the right and up.
+				}
+				if (!done)
+				{
+					done = queen(row - 2, column + 1);	// Move the next queen up and to the right.
+				}
+				if (!done)
+				{
+					done = queen(row - 2, column - 1);	// Move the next queen up and to the left.
+				}
+				if (!done)
+				{
+					done = queen(row - 1, column - 2);	// Move the next queen to the left and up.
+				}
+				if (!done)
+				{
+					done = queen(row + 1, column - 2);	// Move the next queen to the left and down.
 				}
 			}
 			
@@ -95,14 +113,14 @@ public class Queens
 				}
 			}
 			
-//			// Diagonally...
-//			for (int i = 0; i < chessBoard.length; i++)
-//			{
-//				if (chessBoard[i][i] != 0 && i != row && i != column)
-//				{
-//					isValid = false;
-//				}
-//			}
+			// Diagonally...
+			for (int i = 0; i < chessBoard.length; i++)
+			{
+				if (chessBoard[i][i] != 0 && i != row && i != column)
+				{
+					isValid = false;
+				}
+			}
 		}
 		else
 		{
