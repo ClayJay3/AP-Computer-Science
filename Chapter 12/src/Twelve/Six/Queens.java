@@ -28,6 +28,9 @@ public class Queens
 			queensPlaced ++;
 			
 			// Mark this cell as tried.
+			System.out.println(row);
+			System.out.println(column);
+			System.out.println(queensPlaced);
 			chessBoard[row][column] = TRIED;
 			
 			// If 8 queens have been placed then the problem is solved.
@@ -68,7 +71,7 @@ public class Queens
 		boolean isValid = true;
 
 		// Make sure values are inside the array.
-		if (row >= 0 && row < chessBoard.length && column >= 0 && column < chessBoard[row].length)
+		if (row >= 0 && row < chessBoard.length && column >= 0 && column < chessBoard[row].length && chessBoard[row][column] == 0)
 		{
 			///////////////////////////////////////////////////
 			// Find conflicting locations of other queens.	 //
@@ -92,17 +95,18 @@ public class Queens
 				}
 			}
 			
-			// Diagonally...
-			for (int i = 0; i < chessBoard.length; i++)
-			{
-				int j = 
-				int p = 
-				
-				if (chessBoard[row + i][column + i] != 0 && i != row && i != column)
-				{
-					isValid = false;
-				}
-			}
+//			// Diagonally...
+//			for (int i = 0; i < chessBoard.length; i++)
+//			{
+//				if (chessBoard[i][i] != 0 && i != row && i != column)
+//				{
+//					isValid = false;
+//				}
+//			}
+		}
+		else
+		{
+			isValid = false;
 		}
 
 		return isValid;
