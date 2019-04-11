@@ -120,6 +120,10 @@ public class Queens
 				{
 					isValid = false;
 				}
+				if ()
+				{
+					
+				}
 			}
 		}
 		else
