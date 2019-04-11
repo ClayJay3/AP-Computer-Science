@@ -4,7 +4,7 @@ public class Queens
 {
 	// Create objects, variables, and arrays.
 	private final int TRIED = 1;
-	private final int QUEEN = 8;
+	private final int QUEEN = 2;
 	private int queensPlaced = 0;
 	private int[][] chessBoard = {{0,0,0,0,0,0,0,0},
 								{0,0,0,0,0,0,0,0},
@@ -42,35 +42,67 @@ public class Queens
 			}
 			else
 			{
-				done = queen(row + 2, column + 1);	// Move the next queen down and to the right.
+				// LOGIC BLOCKS FOR MOVING QUEENS.
+				// LEFT DOWN
 				if (!done)
-				{
-					done = queen(row + 2, column - 1);	// Move the next queen down and to the left.
-				}
+					done = queen(row + 1, column - 1);
 				if (!done)
-				{
-					done = queen(row + 1, column + 2);	// Move the next queen to the right and down.
-				}
+					done = queen(row + 1, column - 2);	
 				if (!done)
-				{
-					done = queen(row - 1, column + 2);	// Move the next queen to the right and up.
-				}
+					done = queen(row + 1, column - 3);	
 				if (!done)
-				{
-					done = queen(row - 2, column + 1);	// Move the next queen up and to the right.
-				}
+					done = queen(row + 1, column - 4);	
 				if (!done)
-				{
-					done = queen(row - 2, column - 1);	// Move the next queen up and to the left.
-				}
+					done = queen(row + 1, column - 5);	
 				if (!done)
-				{
-					done = queen(row - 1, column - 2);	// Move the next queen to the left and up.
-				}
+					done = queen(row + 1, column - 6);	
 				if (!done)
-				{
-					done = queen(row + 1, column - 2);	// Move the next queen to the left and down.
-				}
+					done = queen(row + 1, column - 7);
+				// RIGHT DOWN
+				if (!done)
+					done = queen(row + 1, column + 1);
+				if (!done)
+					done = queen(row + 1, column + 2);
+				if (!done)
+					done = queen(row + 1, column + 3);
+				if (!done)
+					done = queen(row + 1, column + 4);
+				if (!done)
+					done = queen(row + 1, column + 5);
+				if (!done)
+					done = queen(row + 1, column + 6);
+				if (!done)
+					done = queen(row + 1, column + 7);
+				// LEFT UP
+				if (!done)
+					done = queen(row - 1, column - 1);
+				if (!done)
+					done = queen(row - 1, column - 2);
+				if (!done)
+					done = queen(row - 1, column - 3);
+				if (!done)
+					done = queen(row - 1, column - 4);
+				if (!done)
+					done = queen(row - 1, column - 5);
+				if (!done)
+					done = queen(row - 1, column - 6);
+				if (!done)
+					done = queen(row - 1, column - 7);
+				// RIGHT UP
+				if (!done)
+					done = queen(row - 1, column + 1);
+				if (!done)
+					done = queen(row - 1, column + 2);
+				if (!done)
+					done = queen(row - 1, column + 3);
+				if (!done)
+					done = queen(row - 1, column + 4);
+				if (!done)
+					done = queen(row - 1, column + 5);
+				if (!done)
+					done = queen(row - 1, column + 6);
+				if (!done)
+					done = queen(row - 1, column + 7);
 			}
 			
 			// If the solution has been found place the queens and print the board.
@@ -120,10 +152,10 @@ public class Queens
 				{
 					isValid = false;
 				}
-				if ()
-				{
-					
-				}
+//				if (chessBoard[i][Math.abs(i - 7)] != 0 && i != row && i != column)
+//				{
+//					isValid = false;
+//				}
 			}
 		}
 		else
