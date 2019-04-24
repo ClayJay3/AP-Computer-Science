@@ -15,11 +15,20 @@ public class Queens
 								{0,0,0,0,0,0,0,0},
 								{0,0,0,0,0,0,0,0}};
 
-	// Recursive method that finds the locations of eight queens so that they don't 'kill' eachother when placed on the chess board.
+	///////////////////////////////////////////////////////
+	///	Recursive method that finds the locations of 	///
+	///	eight queens so that they don't 'kill' 			///
+	///	eachother when placed on the chess board.		///
+	///////////////////////////////////////////////////////
 	public boolean queen(int row, int column)
 	{
 		// Instance variables.
 		boolean done = false;
+		
+		// Print debug info.
+		//System.out.println("row: " + row);
+		//System.out.println("column: " + column);
+		//System.out.println("queens placed: " + queensPlaced);
 		
 		// Determines if this queens location is valid.
 		if (valid(row, column))
@@ -30,11 +39,6 @@ public class Queens
 			// Mark this cell as tried.
 			chessBoard[row][column] = TRIED;
 			
-			// Print user info.
-			System.out.println("row: " + row);
-			System.out.println("column: " + column);
-			System.out.println("queens placed: " + queensPlaced);
-			
 			// If 8 queens have been placed then the problem is solved.
 			if (queensPlaced == 8)
 			{
@@ -43,79 +47,39 @@ public class Queens
 			else
 			{
 				// LOGIC BLOCKS FOR MOVING QUEENS.
-				// LEFT DOWN
+				done = queen(row + 1, column + 1);
+				for (int i = 1; i < chessBoard[0].length; i++) 
+				{
+					// Move the queen...
+					if (!done)
+						done = queen(row + 1, column + i);
+					if (!done)
+						done = queen(row + 1, column - i);
+				}
+				
+				// If not done than back out and undo actions.
 				if (!done)
-					done = queen(row + 1, column - 1);
-				if (!done)
-					done = queen(row + 1, column - 2);	
-				if (!done)
-					done = queen(row + 1, column - 3);	
-				if (!done)
-					done = queen(row + 1, column - 4);	
-				if (!done)
-					done = queen(row + 1, column - 5);	
-				if (!done)
-					done = queen(row + 1, column - 6);	
-				if (!done)
-					done = queen(row + 1, column - 7);
-				// RIGHT DOWN
-				if (!done)
-					done = queen(row + 1, column + 1);
-				if (!done)
-					done = queen(row + 1, column + 2);
-				if (!done)
-					done = queen(row + 1, column + 3);
-				if (!done)
-					done = queen(row + 1, column + 4);
-				if (!done)
-					done = queen(row + 1, column + 5);
-				if (!done)
-					done = queen(row + 1, column + 6);
-				if (!done)
-					done = queen(row + 1, column + 7);
-				// LEFT UP
-				if (!done)
-					done = queen(row - 1, column - 1);
-				if (!done)
-					done = queen(row - 1, column - 2);
-				if (!done)
-					done = queen(row - 1, column - 3);
-				if (!done)
-					done = queen(row - 1, column - 4);
-				if (!done)
-					done = queen(row - 1, column - 5);
-				if (!done)
-					done = queen(row - 1, column - 6);
-				if (!done)
-					done = queen(row - 1, column - 7);
-				// RIGHT UP
-				if (!done)
-					done = queen(row - 1, column + 1);
-				if (!done)
-					done = queen(row - 1, column + 2);
-				if (!done)
-					done = queen(row - 1, column + 3);
-				if (!done)
-					done = queen(row - 1, column + 4);
-				if (!done)
-					done = queen(row - 1, column + 5);
-				if (!done)
-					done = queen(row - 1, column + 6);
-				if (!done)
-					done = queen(row - 1, column + 7);
+					chessBoard[row][column] = 0;
+					queensPlaced -= 1;
 			}
 			
 			// If the solution has been found place the queens and print the board.
 			if (done)
 			{
 				chessBoard[row][column] = QUEEN;
+				
 			}
+			
+			// Print debug info.
+			//System.out.println("QUEEN SUCCESSFULLY PLACED!\n" + toString() + "\n\n");
 		}
 		
 		return done;
 	}
 	
-	// Determine if this queens location conflicts with another.
+	///////////////////////////////////////////////////////////////////
+	/// Determine if this queens location conflicts with another	///
+	///////////////////////////////////////////////////////////////////
 	private boolean valid(int row, int column)
 	{
 		boolean isValid = true;
@@ -145,20 +109,34 @@ public class Queens
 				}
 			}
 			
-			// Diagonally...
-			for (int i = 0; i < chessBoard.length; i++)
+			// Diagonally... (both ways)
+			int key = row - column;
+			for (int i = 0; i < chessBoard.length; i ++)
 			{
-				if (chessBoard[i][i] != 0 && i != row && i != column)
+				for (int j = 0; j < chessBoard[0].length; j++)
 				{
-					isValid = false;
+					if (i - j == key && chessBoard[i][j] == 1)
+					{
+						isValid = false;
+						
+					}
 				}
-//				if (chessBoard[i][Math.abs(i - 7)] != 0 && i != row && i != column)
-//				{
-//					isValid = false;
-//				}
 			}
+			key = row + column;
+			for (int i = 0; i < chessBoard.length; i ++)
+			{
+				for (int j = 0; j < chessBoard[0].length; j++)
+				{
+					if (i + j == key && (chessBoard[i][j] == 1 || chessBoard[i][j] == 2))
+					{
+						isValid = false;
+						
+					}
+				}
+			}
+			
 		}
-		else
+		else 
 		{
 			isValid = false;
 		}
@@ -166,7 +144,26 @@ public class Queens
 		return isValid;
 	}
 	
-	// Object toString.
+	
+	
+	///////////////////////////////////////////////////////
+	///				Clears the Chessboard.			    ///
+	///////////////////////////////////////////////////////
+	public void clear()
+	{
+		queensPlaced = 0;
+		for (int i = 0; i < chessBoard.length; i++)
+		{
+			for (int j = 0; j < chessBoard[0].length; j++)
+			{
+				chessBoard[i][j] = 0;
+			}
+		}
+	}
+	
+	///////////////////////////////////////////////////////
+	///					Object toString.				///
+	///////////////////////////////////////////////////////
 	public String toString()
 	{
 		String result = "";
