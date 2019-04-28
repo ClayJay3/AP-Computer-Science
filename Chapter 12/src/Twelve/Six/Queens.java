@@ -6,6 +6,7 @@ public class Queens
 	private final int TRIED = 1;
 	private final int QUEEN = 2;
 	private int queensPlaced = 0;
+	private int solutionCounter = 0;
 	private int[][] chessBoard = {{0,0,0,0,0,0,0,0},
 								{0,0,0,0,0,0,0,0},
 								{0,0,0,0,0,0,0,0},
@@ -24,11 +25,6 @@ public class Queens
 	{
 		// Instance variables.
 		boolean done = false;
-		
-		// Print debug info.
-		//System.out.println("row: " + row);
-		//System.out.println("column: " + column);
-		//System.out.println("queens placed: " + queensPlaced);
 		
 		// Determines if this queens location is valid.
 		if (valid(row, column))
@@ -66,12 +62,18 @@ public class Queens
 			// If the solution has been found place the queens and print the board.
 			if (done)
 			{
-				chessBoard[row][column] = QUEEN;
+				// Print the currently found solution.
+				System.out.println(toString());
 				
+				// Back out and find another solution.
+				chessBoard[row][column] = 0;
+				queensPlaced -= 1;
+				done = false;
+				
+				// Increment counters.
+				solutionCounter++;
 			}
 			
-			// Print debug info.
-			//System.out.println("QUEEN SUCCESSFULLY PLACED!\n" + toString() + "\n\n");
 		}
 		
 		return done;
@@ -162,6 +164,14 @@ public class Queens
 	}
 	
 	///////////////////////////////////////////////////////
+	///					GETTERS							///
+	///////////////////////////////////////////////////////
+	public int getSolutionCount()
+	{
+		return solutionCounter;
+	}
+	
+	///////////////////////////////////////////////////////
 	///					Object toString.				///
 	///////////////////////////////////////////////////////
 	public String toString()
@@ -176,6 +186,7 @@ public class Queens
 			}
 			result += "\n";
 		}
+		result += "_______________________________________________";
 		
 		return result;
 	}
