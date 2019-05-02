@@ -61,10 +61,6 @@ public class StringSearch
 		{
 			System.out.println(searchString + " has not been found in the array.");
 		}
-		
-		// PRINT DEBUG
-		System.out.println(userStrings);
-		System.out.println(searchString);
 	}
 	
 	/***************************************************************
@@ -80,7 +76,28 @@ public class StringSearch
 		// Create and assign variables.
 		boolean isFound = false;
 		
-		
+		// Search the array for the searchString.
+		if (userStrings.get(0).equalsIgnoreCase(searchString) || userStrings.get(userStrings.size() - 1).equalsIgnoreCase(searchString))
+		{
+			isFound = true;
+		}
+		else
+		{
+			// Delete the first and last elements of the list if array is bigger than two.
+			if (userStrings.size() > 2)
+			{
+				userStrings.remove(0);
+				userStrings.remove(userStrings.size() - 1);
+				
+				// Recursive call.
+				isFound = recursiveSearch(searchString, userStrings);
+			}
+			else
+			{
+				// If array has been fully searched and nothing has been found then return false.
+				isFound = false;
+			}
+		}
 		
 		return isFound;
 	}
