@@ -4,42 +4,36 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class PushButtonSubmit extends JPanel
+public class PushButtonRestart extends JPanel
 {
 	/**************************************************************************
 	 * Definition: Create buttons and labels for the submit button.
 	 **************************************************************************/
-	private int cardCount = 0;;
 	private JButton push;
-	private JLabel cardCountLabel;
 	
 	/**************************************************************************
-	 * Definition: Submit button constructor.
+	 * Definition: Restart button constructor.
 	 * 
 	 * Parameters: Nothing
 	 * 
 	 * Derived From: Elevens
 	 **************************************************************************/
-	public PushButtonSubmit()
+	public PushButtonRestart()
 	{
 		// Initialize the button and add a listener.
-		push = new JButton("Submit");
+		push = new JButton("Restart");
 		push.addActionListener(new ButtonListener());
-		
-		// Initialize the cardCount label.
-		cardCountLabel = new JLabel("Card Remaining: " + cardCount);
 		
 		// Set the button size, color and location.
 		push.setPreferredSize(new Dimension(100, 50));
 		push.setBackground(Color.WHITE);
 		
 		// Add the button to the JPanel.
-		add(cardCountLabel);
 		add(push);
 	}
 	
 	/**************************************************************************
-	 * Definition: Button listener for the submit button.
+	 * Definition: Button listener for the restart button.
 	 * 
 	 * Parameters: Nothing
 	 * 
@@ -48,7 +42,7 @@ public class PushButtonSubmit extends JPanel
 	private class ButtonListener implements ActionListener
 	{
 		/**************************************************************************
-		 * Definition: Check the cards and their point values and submit.
+		 * Definition: shuffle the cards and restart the game.
 		 * 
 		 * Parameters: ACTIONEVENT event
 		 * 
