@@ -9,9 +9,9 @@ public class PushButtonSubmit extends JPanel
 	/**************************************************************************
 	 * Definition: Create buttons and labels for the submit button.
 	 **************************************************************************/
-	private int cardCount = 52;
 	private JButton push;
 	private JLabel cardCountLabel;
+	private Deck deckOfCards;
 	
 	/**************************************************************************
 	 * Definition: Submit button constructor.
@@ -20,14 +20,17 @@ public class PushButtonSubmit extends JPanel
 	 * 
 	 * Derived From: Elevens
 	 **************************************************************************/
-	public PushButtonSubmit()
+	public PushButtonSubmit(Deck deckOfCards)
 	{
+		// Store deckOfCards object.
+		this.deckOfCards = deckOfCards;
+		
 		// Initialize the button and add a listener.
 		push = new JButton("Submit");
 		push.addActionListener(new ButtonListener());
 		
 		// Initialize the cardCount label.
-		cardCountLabel = new JLabel("Cards Remaining: " + cardCount);
+		cardCountLabel = new JLabel("Cards Remaining: " + deckOfCards.size());
 		
 		// Set the button size, color and location.
 		push.setPreferredSize(new Dimension(100, 50));
@@ -39,27 +42,15 @@ public class PushButtonSubmit extends JPanel
 	}
 	
 	/**************************************************************************
-	 * Definition: Getter for cardCount.
+	 * Definition: Update the cardCount to 52.
 	 * 
 	 * Parameters: Nothing
 	 * 
-	 * Returns: INT cardCount
+	 * Return: Nothing
 	 **************************************************************************/
-	public int getCardCount()
+	public void updateCardCount()
 	{
-		return cardCount;
-	}
-	
-	/**************************************************************************
-	 * Definition: Setter for cardCount.
-	 * 
-	 * Parameters: INT cardCount
-	 * 
-	 * Returns: Nothing
-	 **************************************************************************/
-	public void setCardCount(int cardCount)
-	{
-		this.cardCount = cardCount;
+		cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
 	}
 	
 	/**************************************************************************
@@ -80,8 +71,8 @@ public class PushButtonSubmit extends JPanel
 		 **************************************************************************/
 		public void actionPerformed(ActionEvent event)
 		{
-			cardCount--;
-			cardCountLabel.setText("Cards Remaining: " + cardCount);
+			deckOfCards.deal();
+			cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
 			System.out.println("Cards Submitted!");
 		}
 	}

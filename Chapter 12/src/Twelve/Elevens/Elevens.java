@@ -25,9 +25,8 @@ public class Elevens
 		String[] rank = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
 		int[] pointValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, -1, -2};
 		Deck deckOfCards = new Deck(suits, rank, pointValues);
-		PushButtonSubmit submitButton = new PushButtonSubmit();
-		PushButtonRestart restartButton = new PushButtonRestart();
-		submitButton.setCardCount(deckOfCards.size());
+		PushButtonSubmit submitButton = new PushButtonSubmit(deckOfCards);
+		PushButtonRestart restartButton = new PushButtonRestart(deckOfCards, submitButton);
 		
 		// Create and setup the Elevens game window.
 		JFrame frame = new JFrame("Elevens");

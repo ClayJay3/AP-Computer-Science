@@ -10,6 +10,8 @@ public class PushButtonRestart extends JPanel
 	 * Definition: Create buttons and labels for the submit button.
 	 **************************************************************************/
 	private JButton push;
+	private Deck deckOfCards;
+	private PushButtonSubmit submitButton;
 	
 	/**************************************************************************
 	 * Definition: Restart button constructor.
@@ -18,8 +20,12 @@ public class PushButtonRestart extends JPanel
 	 * 
 	 * Derived From: Elevens
 	 **************************************************************************/
-	public PushButtonRestart()
+	public PushButtonRestart(Deck deckOfCards, PushButtonSubmit submitButton)
 	{
+		// Store deckOfCards object and submitButton object.
+		this.deckOfCards = deckOfCards;
+		this.submitButton = submitButton;
+		
 		// Initialize the button and add a listener.
 		push = new JButton("Restart");
 		push.addActionListener(new ButtonListener());
@@ -50,7 +56,8 @@ public class PushButtonRestart extends JPanel
 		 **************************************************************************/
 		public void actionPerformed(ActionEvent event)
 		{
-			
+			deckOfCards.shuffle();
+			submitButton.updateCardCount();
 			System.out.println("Program restarted");
 		}
 	}
