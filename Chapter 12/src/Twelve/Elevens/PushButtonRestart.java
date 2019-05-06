@@ -33,7 +33,11 @@ public class PushButtonRestart extends JPanel
 		
 		// Set the button size, color and location.
 		push.setPreferredSize(new Dimension(100, 50));
+		push.setBorder(BorderFactory.createLineBorder(Color.RED));
 		push.setBackground(Color.WHITE);
+		
+		// Set element background color.
+		setBackground(Color.GRAY);
 		
 		// Add the button to the JPanel.
 		add(push);

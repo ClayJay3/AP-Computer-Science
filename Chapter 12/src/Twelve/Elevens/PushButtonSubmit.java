@@ -32,26 +32,19 @@ public class PushButtonSubmit extends JPanel
 		
 		// Initialize the cardCount label.
 		cardCountLabel = new JLabel("Cards Remaining: " + deckOfCards.size());
+		cardCountLabel.setForeground(Color.RED);
 		
 		// Set the button size, color and location.
 		push.setPreferredSize(new Dimension(100, 50));
+		push.setBorder(BorderFactory.createLineBorder(Color.RED));
 		push.setBackground(Color.WHITE);
+		
+		// Set element background color.
+		setBackground(Color.GRAY);
 		
 		// Add the button to the JPanel.
 		add(cardCountLabel);
 		add(push);
-	}
-	
-	/**************************************************************************
-	 * Definition: Update the cardCount to 52.
-	 * 
-	 * Parameters: Nothing
-	 * 
-	 * Return: Nothing
-	 **************************************************************************/
-	public void updateCardCount()
-	{
-		cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
 	}
 	
 	/**************************************************************************
@@ -77,5 +70,17 @@ public class PushButtonSubmit extends JPanel
 			cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
 			System.out.println("Cards Submitted!");
 		}
+	}
+	
+	/**************************************************************************
+	 * Definition: Update the cardCount to 52.
+	 * 
+	 * Parameters: Nothing
+	 * 
+	 * Return: Nothing
+	 **************************************************************************/
+	public void updateCardCount()
+	{
+		cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
 	}
 }
