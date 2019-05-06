@@ -53,9 +53,9 @@ public class Deck
 		size = deckOfCards.size();
 		
 		// Shuffle the deckOfCards.
-		for (int i = size; i > 0; i--)
+		for (int i = size - 1; i > 0; i--)
 		{
-			Collections.swap(deckOfCards, i, rand.nextInt());
+			Collections.swap(deckOfCards, i, rand.nextInt(size - 1));
 		}
 	}
 	

@@ -51,6 +51,7 @@ public class PushButtonRestart extends JPanel
 		public void actionPerformed(ActionEvent event)
 		{
 			
+			System.out.println("Program restarted");
 		}
 	}
 }
