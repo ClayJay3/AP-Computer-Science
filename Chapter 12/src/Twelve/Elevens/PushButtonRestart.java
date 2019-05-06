@@ -12,6 +12,7 @@ public class PushButtonRestart extends JPanel
 	private JButton push;
 	private Deck deckOfCards;
 	private PushButtonSubmit submitButton;
+	private static final long serialVersionUID = 1L;	// Graphic class identifier.
 	
 	/**************************************************************************
 	 * Definition: Restart button constructor.
@@ -48,7 +49,7 @@ public class PushButtonRestart extends JPanel
 	private class ButtonListener implements ActionListener
 	{
 		/**************************************************************************
-		 * Definition: shuffle the cards and restart the game.
+		 * Definition: Shuffle the cards and restart the game.
 		 * 
 		 * Parameters: ACTIONEVENT event
 		 * 
@@ -56,8 +57,11 @@ public class PushButtonRestart extends JPanel
 		 **************************************************************************/
 		public void actionPerformed(ActionEvent event)
 		{
+			// Shuffle the deck and reset card count.
 			deckOfCards.shuffle();
 			submitButton.updateCardCount();
+			
+			// DEBUG INFO.
 			System.out.println("Program restarted");
 		}
 	}

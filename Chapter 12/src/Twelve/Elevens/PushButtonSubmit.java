@@ -12,6 +12,7 @@ public class PushButtonSubmit extends JPanel
 	private JButton push;
 	private JLabel cardCountLabel;
 	private Deck deckOfCards;
+	private static final long serialVersionUID = 1L;	// Graphic class identifier.
 	
 	/**************************************************************************
 	 * Definition: Submit button constructor.
@@ -71,6 +72,7 @@ public class PushButtonSubmit extends JPanel
 		 **************************************************************************/
 		public void actionPerformed(ActionEvent event)
 		{
+			// TEMPORARY TEST CODE.
 			deckOfCards.deal();
 			cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
 			System.out.println("Cards Submitted!");
