@@ -7,7 +7,7 @@ import javax.swing.*;
 public class PushButtonRestart extends JPanel
 {
 	/**************************************************************************
-	 * Definition: Create buttons and labels for the submit button.
+	 *	Create buttons and labels for the submit button.
 	 **************************************************************************/
 	private JButton push;
 	private Deck deckOfCards;

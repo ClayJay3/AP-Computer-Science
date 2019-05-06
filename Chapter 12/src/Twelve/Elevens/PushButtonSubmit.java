@@ -7,7 +7,7 @@ import javax.swing.*;
 public class PushButtonSubmit extends JPanel
 {
 	/**************************************************************************
-	 * Definition: Create buttons and labels for the submit button.
+	 *	Create buttons and labels for the submit button.
 	 **************************************************************************/
 	private JButton push;
 	private JLabel cardCountLabel;
