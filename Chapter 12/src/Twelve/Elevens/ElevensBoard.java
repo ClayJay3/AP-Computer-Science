@@ -41,8 +41,6 @@ public class ElevensBoard extends JPanel
 		// Create and setup the grid layout for checkboxes.
 		cardLayoutType = new GridLayout(3, 3);
 		cardLayout = new JPanel();
-		cardLayoutType.setHgap(0);
-		cardLayoutType.setVgap(0);
 		cardLayout.setLayout(cardLayoutType);
 		
 		// Add checkbox elements to the layout.
@@ -240,6 +238,18 @@ public class ElevensBoard extends JPanel
 			// Set size, color, and location.
 			checkBoxCards[i].setBackground(Color.GRAY);
 		}
+	}
+	
+	/**************************************************************************
+	 * Definition: Getter for the board.
+	 * 
+	 * Parameters: Nothing
+	 * 
+	 * Returns: JCHECKBOX[] board
+	 **************************************************************************/
+	public JCheckBox[] getBoard()
+	{
+		return checkBoxCards;
 	}
 	
 	/**************************************************************************

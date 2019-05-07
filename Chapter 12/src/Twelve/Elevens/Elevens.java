@@ -3,8 +3,10 @@ package Twelve.Elevens;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -25,7 +27,7 @@ public class Elevens
 		int[] pointValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 		Deck deckOfCards = new Deck(suits, rank, pointValues);
 		ElevensBoard board = new ElevensBoard(deckOfCards);
-		PushButtonSubmit submitButton = new PushButtonSubmit(deckOfCards, board);
+		PushButtonSubmit submitButton = new PushButtonSubmit(board);
 		PushButtonRestart restartButton = new PushButtonRestart(deckOfCards, submitButton, board);
 
 		// Create and setup the Elevens game window.
@@ -33,6 +35,14 @@ public class Elevens
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(800, 600));
 		frame.setResizable(false);
+		
+		// Create and setup the title label.
+		JLabel title = new JLabel();
+		title.setSize(400, 25);
+		title.setLocation(325, 10);
+		title.setForeground(Color.RED);
+		title.setText("ELEVENS");
+		title.setFont(new Font("Arial", Font.BOLD, 32));
 		
 		// Create and setup the buttons panel.
 		JPanel buttonsPanel = new JPanel();
@@ -44,6 +54,7 @@ public class Elevens
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		panel.setBackground(Color.DARK_GRAY);
+		panel.add(title);
 		panel.add(buttonsPanel, BorderLayout.SOUTH);
 		panel.add(board, BorderLayout.CENTER);
 		

@@ -12,7 +12,6 @@ public class PushButtonSubmit extends JPanel
 	private int cardsLeft;
 	private JButton push;
 	private JLabel cardCountLabel;
-	private Deck deckOfCards;
 	private ElevensBoard board;
 	private static final long serialVersionUID = 1L;	// Graphic class identifier.
 	
@@ -23,10 +22,9 @@ public class PushButtonSubmit extends JPanel
 	 * 
 	 * Derived From: Elevens
 	 **************************************************************************/
-	public PushButtonSubmit(Deck deckOfCards, ElevensBoard board)
+	public PushButtonSubmit(ElevensBoard board)
 	{
 		// Store initialize objects and variable.
-		this.deckOfCards = deckOfCards;
 		this.board = board;
 		cardsLeft = 52;
 		
