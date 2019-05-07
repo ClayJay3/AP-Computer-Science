@@ -23,7 +23,8 @@ public class Elevens
 		String[] rank = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
 		int[] pointValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 		Deck deckOfCards = new Deck(suits, rank, pointValues);
-		PushButtonSubmit submitButton = new PushButtonSubmit(deckOfCards);
+		ElevensBoard board = new ElevensBoard(deckOfCards);
+		PushButtonSubmit submitButton = new PushButtonSubmit(deckOfCards, board);
 		PushButtonRestart restartButton = new PushButtonRestart(deckOfCards, submitButton);
 		
 		// Create and setup the Elevens game window.
@@ -43,7 +44,7 @@ public class Elevens
 		panel.setLayout(new BorderLayout());
 		panel.setBackground(Color.DARK_GRAY);
 		panel.add(buttonsPanel, BorderLayout.SOUTH);
-		panel.add(new ElevensBoard(deckOfCards), BorderLayout.NORTH);
+		panel.add(board, BorderLayout.NORTH);
 		
 		// Add button to the window.
 		frame.add(panel);

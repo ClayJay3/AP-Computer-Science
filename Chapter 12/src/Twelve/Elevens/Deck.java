@@ -7,7 +7,7 @@ import java.util.Random;
 public class Deck
 {
 	/**************************************************************************
-	 * Definition: Create variables, objects, and arrays for the deck class.
+	 *	Create variables, objects, and arrays for the deck class.
 	 *************************************************************************/
 	private ArrayList<Card> deckOfCards = new ArrayList<Card>();
 	private int size;

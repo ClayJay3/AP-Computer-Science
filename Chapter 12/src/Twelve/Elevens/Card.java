@@ -3,7 +3,7 @@ package Twelve.Elevens;
 public class Card
 {
 	/**************************************************************************
-	 * Definition: Create variables and objects for the card class.
+	 *	Create variables and objects for the card class.
 	 *************************************************************************/
 	private int pointValue;
 	private String suit, rank;

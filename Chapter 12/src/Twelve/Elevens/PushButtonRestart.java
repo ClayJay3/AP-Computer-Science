@@ -57,7 +57,7 @@ public class PushButtonRestart extends JPanel
 		 * 
 		 * Parameters: ACTIONEVENT event
 		 * 
-		 * Derived From: Nothing
+		 * Returns: Nothing
 		 **************************************************************************/
 		public void actionPerformed(ActionEvent event)
 		{
