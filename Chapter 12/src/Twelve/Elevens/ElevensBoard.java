@@ -219,6 +219,7 @@ public class ElevensBoard extends JPanel
 		for (int i = 0; i < 9; i++)
 		{
 			// Reset the checkbox and remove the action listeners.
+			checkBoxCards[i].setEnabled(true);
 			checkBoxCards[i].setSelected(false);
 			for (ActionListener actionListener : checkBoxCards[i].getActionListeners())
 			{

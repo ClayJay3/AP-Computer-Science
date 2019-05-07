@@ -114,8 +114,14 @@ public class PushButtonSubmit extends JPanel
 					System.out.println("Cards Not Submitted...");
 				}
 			}	
-			
 			System.out.println();
+			
+			// Check if cardsLeft is 0 and if the user has won the game.
+			if (cardsLeft == 0)
+			{
+				// Print win message.
+				JOptionPane.showMessageDialog(null, "Good job, you won the game! To play again hit the restart button.", "You Won!", JOptionPane.INFORMATION_MESSAGE);
+			}
 		}
 	}
 	

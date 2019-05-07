@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Elevens
@@ -26,25 +27,25 @@ public class Elevens
 		ElevensBoard board = new ElevensBoard(deckOfCards);
 		PushButtonSubmit submitButton = new PushButtonSubmit(deckOfCards, board);
 		PushButtonRestart restartButton = new PushButtonRestart(deckOfCards, submitButton, board);
-		
+
 		// Create and setup the Elevens game window.
 		JFrame frame = new JFrame("Elevens Project - Clayton Cowen");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(800, 600));
 		frame.setResizable(false);
-				
+		
 		// Create and setup the buttons panel.
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setBackground(Color.GRAY);
 		buttonsPanel.add(submitButton);
 		buttonsPanel.add(restartButton);
 		
-		// Create and setup the panel for incasing the board and the buttons.
+		// Create and setup the panel for incasing the board and the buttons and instructions.
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		panel.setBackground(Color.DARK_GRAY);
 		panel.add(buttonsPanel, BorderLayout.SOUTH);
-		panel.add(board, BorderLayout.NORTH);
+		panel.add(board, BorderLayout.CENTER);
 		
 		// Add button to the window.
 		frame.add(panel);
@@ -52,5 +53,10 @@ public class Elevens
 		// Update window.
 		frame.pack();
 		frame.setVisible(true);
+		
+		// Show instructions.
+		JOptionPane.showMessageDialog(frame, "To Match a Valid Pair of Cards: \n"
+				+ "-Select two non-face cards whose values add to 11. \n"
+				+ "-Select a group of three cards consisting if a jack, queen, and a king.", "Instructions", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
