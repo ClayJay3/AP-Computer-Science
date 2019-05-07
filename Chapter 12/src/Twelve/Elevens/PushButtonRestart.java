@@ -12,6 +12,7 @@ public class PushButtonRestart extends JPanel
 	private JButton push;
 	private Deck deckOfCards;
 	private PushButtonSubmit submitButton;
+	private ElevensBoard board;
 	private static final long serialVersionUID = 1L;	// Graphic class identifier.
 	
 	/**************************************************************************
@@ -21,11 +22,12 @@ public class PushButtonRestart extends JPanel
 	 * 
 	 * Derived From: Elevens
 	 **************************************************************************/
-	public PushButtonRestart(Deck deckOfCards, PushButtonSubmit submitButton)
+	public PushButtonRestart(Deck deckOfCards, PushButtonSubmit submitButton, ElevensBoard board)
 	{
-		// Store deckOfCards object and submitButton object.
+		// Store deckOfCards, submitButton, and board object.
 		this.deckOfCards = deckOfCards;
 		this.submitButton = submitButton;
+		this.board = board;
 		
 		// Initialize the button and add a listener.
 		push = new JButton("Restart");
@@ -63,7 +65,8 @@ public class PushButtonRestart extends JPanel
 		{
 			// Shuffle the deck and reset card count.
 			deckOfCards.shuffle();
-			submitButton.updateCardCount();
+			submitButton.resetCardCount();
+			board.resetBoard();
 			
 			// DEBUG INFO.
 			System.out.println("Program restarted");

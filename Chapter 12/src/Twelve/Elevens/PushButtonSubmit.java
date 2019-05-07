@@ -9,6 +9,7 @@ public class PushButtonSubmit extends JPanel
 	/**************************************************************************
 	 *	Create buttons and labels for the submit button.
 	 **************************************************************************/
+	private int cardsLeft;
 	private JButton push;
 	private JLabel cardCountLabel;
 	private Deck deckOfCards;
@@ -24,16 +25,17 @@ public class PushButtonSubmit extends JPanel
 	 **************************************************************************/
 	public PushButtonSubmit(Deck deckOfCards, ElevensBoard board)
 	{
-		// Store deckOfCards object.
+		// Store initialize objects and variable.
 		this.deckOfCards = deckOfCards;
 		this.board = board;
+		cardsLeft = 52;
 		
 		// Initialize the button and add a listener.
 		push = new JButton("Submit");
 		push.addActionListener(new ButtonListener());
 		
 		// Initialize the cardCount label.
-		cardCountLabel = new JLabel("Cards Remaining: " + deckOfCards.size());
+		cardCountLabel = new JLabel("Cards Remaining: " + cardsLeft);
 		cardCountLabel.setForeground(Color.RED);
 		
 		// Set the button size, color and location.
@@ -67,35 +69,53 @@ public class PushButtonSubmit extends JPanel
 		 **************************************************************************/
 		public void actionPerformed(ActionEvent event)
 		{
-			//PRINT DEBUG
-			System.out.println(board.getNumberOfCards());
-			System.out.println(board.getSelectedPointValue());
+			// PRINT DEBUG
+			System.out.println("Number of Cards Selected: " + board.getNumberOfCards());
+			System.out.println("Card Point Values: " + board.getSelectedPointValue());
 			
 			// Test if the card combo is valid.
 			if (board.getNumberOfCards() == 2 && board.getSelectedPointValue() == 11)
 			{
+				// PRINT DEBUG
+				System.out.println("Cards Submitted!");
+				
+				// Decrement cardsLeft and update label.
+				cardsLeft -= 2;
+				cardCountLabel.setText("Cards Remaining: " + cardsLeft);
+				
 				// Reset card counters.
 				board.setNumberOfCards(0);
 				board.setSelectedPointValue(0);
 				
 				// Replace selected cards with new ones.
-				board.showNewCards();
+				board.dealCards();
 			}
 			else
 			{
 				if (board.getNumberOfCards() == 3 && board.getSelectedPointValue() == 36)
 				{
+					// PRINT DEBUG
+					System.out.println("Cards Submitted!");
+					
+					// Decrement cardsLeft and update label.
+					cardsLeft -= 3;
+					cardCountLabel.setText("Cards Remaining: " + cardsLeft);
+					
 					// Reset card counters.
 					board.setNumberOfCards(0);
 					board.setSelectedPointValue(0);
 					
 					// Replace selected cards with new ones.
-					board.showNewCards();
+					board.dealCards();
 				}
-			}
+				else
+				{
+					// PRINT DEBUG
+					System.out.println("Cards Not Submitted...");
+				}
+			}	
 			
-			cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
-			System.out.println("Cards Submitted!");
+			System.out.println();
 		}
 	}
 	
@@ -106,8 +126,9 @@ public class PushButtonSubmit extends JPanel
 	 * 
 	 * Return: Nothing
 	 **************************************************************************/
-	public void updateCardCount()
+	public void resetCardCount()
 	{
-		cardCountLabel.setText("Cards Remaining: " + deckOfCards.size());
+		cardsLeft = 52;
+		cardCountLabel.setText("Cards Remaining: " + cardsLeft);
 	}
 }

@@ -140,18 +140,18 @@ public class ElevensBoard extends JPanel
 	}
 	
 	/**************************************************************************
-	 * Definition: Show a new card on the board
+	 * Definition: Show new cards on the board
 	 * 
-	 * Parameters: 
+	 * Parameters: Nothing
 	 * 
 	 * Returns: Nothing
 	 **************************************************************************/
-	public void showNewCards()
+	public void dealCards()
 	{
-		System.out.println(checkBoxCards.toString());
 		for (int i = 0; i < 9; i++)
 		{
-			if (deckOfCards.size() == 0)
+			// If no more cards are left then disable that checkbox.
+			if (deckOfCards.size() == 0 && checkBoxCards[i].getBackground() == Color.RED)
 			{
 				// Disable the card.
 				checkBoxCards[i].setEnabled(false);
@@ -175,6 +175,7 @@ public class ElevensBoard extends JPanel
 			}
 			else
 			{
+				// Reset the card checkbox and show a new icon.
 				if (checkBoxCards[i].getBackground() == Color.RED)
 				{
 					// Reset the checkbox and remove the action listeners.
@@ -199,6 +200,44 @@ public class ElevensBoard extends JPanel
 					checkBoxCards[i].setBackground(Color.GRAY);
 				}
 			}
+		}
+	}
+	
+	/**************************************************************************
+	 * Definition: Replace all new cards on the board.
+	 * 
+	 * Parameters: Nothing
+	 * 
+	 * Returns: Nothing
+	 **************************************************************************/
+	public void resetBoard()
+	{
+		// Reset number of cards selected and pointValues.
+		setNumberOfCards(0);
+		setSelectedPointValue(0);
+		
+		for (int i = 0; i < 9; i++)
+		{
+			// Reset the checkbox and remove the action listeners.
+			checkBoxCards[i].setSelected(false);
+			for (ActionListener actionListener : checkBoxCards[i].getActionListeners())
+			{
+				checkBoxCards[i].removeActionListener(actionListener);
+			}
+			
+			// Store the card that this checkbox represents.
+			Card card = deckOfCards.deal();
+			checkBoxCards[i].addActionListener(new ButtonListener(checkBoxCards[i], card));
+			
+			// Open the image, resize it, and then set the icon.
+			ImageIcon rawImage = new ImageIcon("/root/Documents/AP-Computer-Science/Chapter 12/src/Twelve/Elevens/CardImages/" + getIcon(card));
+			Image image = rawImage.getImage();
+			Image resizedImage = image.getScaledInstance(100, 145, java.awt.Image.SCALE_SMOOTH);
+			ImageIcon cardImage = new ImageIcon(resizedImage);
+			checkBoxCards[i].setIcon(cardImage);
+			
+			// Set size, color, and location.
+			checkBoxCards[i].setBackground(Color.GRAY);
 		}
 	}
 	

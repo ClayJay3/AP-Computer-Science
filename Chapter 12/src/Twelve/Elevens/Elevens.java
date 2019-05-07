@@ -25,7 +25,7 @@ public class Elevens
 		Deck deckOfCards = new Deck(suits, rank, pointValues);
 		ElevensBoard board = new ElevensBoard(deckOfCards);
 		PushButtonSubmit submitButton = new PushButtonSubmit(deckOfCards, board);
-		PushButtonRestart restartButton = new PushButtonRestart(deckOfCards, submitButton);
+		PushButtonRestart restartButton = new PushButtonRestart(deckOfCards, submitButton, board);
 		
 		// Create and setup the Elevens game window.
 		JFrame frame = new JFrame("Elevens Project - Clayton Cowen");
