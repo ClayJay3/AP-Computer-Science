@@ -125,6 +125,12 @@ public class PushButtonSubmit extends JPanel
 						}
 					}
 					
+					// Jackson Easter Egg.
+					if (board.getNumberOfCards() == 5)
+					{
+						board.jacksonEasterEgg();
+					}
+					
 					// PRINT DEBUG
 					System.out.println("Cards Not Submitted...");
 				}

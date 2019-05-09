@@ -1,6 +1,7 @@
 package ElevensProject;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,8 @@ import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ElevensBoard extends JPanel
@@ -57,7 +60,7 @@ public class ElevensBoard extends JPanel
 			checkBoxCards[i].addActionListener(new ButtonListener(checkBoxCards[i], card));
 			
 			// Open the image, resize it, and then set the icon.
-			ImageIcon rawImage = new ImageIcon("res/" + getIcon(card));
+			ImageIcon rawImage = new ImageIcon(ClassLoader.getSystemResource(getIcon(card)));
 			Image image = rawImage.getImage();
 			Image resizedImage = image.getScaledInstance(100, 145, java.awt.Image.SCALE_SMOOTH);
 			ImageIcon cardImage = new ImageIcon(resizedImage);
@@ -178,7 +181,7 @@ public class ElevensBoard extends JPanel
 				}
 				
 				// Open the image, resize it, and then set the icon.
-				ImageIcon rawImage = new ImageIcon("res/b01.png");
+				ImageIcon rawImage = new ImageIcon(ClassLoader.getSystemResource("b01.png"));
 				Image image = rawImage.getImage();
 				Image resizedImage = image.getScaledInstance(100, 145, java.awt.Image.SCALE_SMOOTH);
 				ImageIcon cardImage = new ImageIcon(resizedImage);
@@ -204,7 +207,7 @@ public class ElevensBoard extends JPanel
 					checkBoxCards[i].addActionListener(new ButtonListener(checkBoxCards[i], card));
 					
 					// Open the image, resize it, and then set the icon.
-					ImageIcon rawImage = new ImageIcon("res/" + getIcon(card));
+					ImageIcon rawImage = new ImageIcon(ClassLoader.getSystemResource(getIcon(card)));
 					Image image = rawImage.getImage();
 					Image resizedImage = image.getScaledInstance(100, 145, java.awt.Image.SCALE_SMOOTH);
 					ImageIcon cardImage = new ImageIcon(resizedImage);
@@ -258,7 +261,7 @@ public class ElevensBoard extends JPanel
 			checkBoxCards[i].addActionListener(new ButtonListener(checkBoxCards[i], card));
 			
 			// Open the image, resize it, and then set the icon.
-			ImageIcon rawImage = new ImageIcon("res/" + getIcon(card));
+			ImageIcon rawImage = new ImageIcon(ClassLoader.getSystemResource(getIcon(card)));
 			Image image = rawImage.getImage();
 			Image resizedImage = image.getScaledInstance(100, 145, java.awt.Image.SCALE_SMOOTH);
 			ImageIcon cardImage = new ImageIcon(resizedImage);
@@ -363,7 +366,7 @@ public class ElevensBoard extends JPanel
 		
 		for (int i = 0; i < 8; i++)
 		{
-			// Set all checkBoxes to red.
+			// Set all checkBoxes to a random color.
 			for (JCheckBox card : checkBoxCards) 
 			{
 				// Get a random number.
@@ -399,6 +402,29 @@ public class ElevensBoard extends JPanel
 				card.setBackground(color);
 			}
 		}
+	}
+	
+	/**************************************************************************
+	 * Definition: Open a new JFrame with Mr.Jacksons Picture.
+	 * 
+	 * Parameters: Nothing
+	 * 
+	 * Returns: Nothing
+	 **************************************************************************/
+	public void jacksonEasterEgg()
+	{
+		// Create a new JFrame with jacksons picture.
+		JFrame jacksonFrame = new JFrame("Mr.Jackson Easter Egg");
+		jacksonFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jacksonFrame.setPreferredSize(new Dimension(250, 245));
+		jacksonFrame.setResizable(false);
+		
+		// Add the image to the frame.
+		jacksonFrame.add(new JLabel(new ImageIcon(ClassLoader.getSystemResource("myboijackson.png"))));
+		
+		// Update window.
+		jacksonFrame.pack();
+		jacksonFrame.setVisible(true);
 	}
 	
 	/**************************************************************************
