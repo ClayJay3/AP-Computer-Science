@@ -24,7 +24,7 @@ public class Elevens
 		// Create objects and variables and arrays.
 		String[] suits = {"hearts", "clubs", "spades", "diamonds"};
 		String[] rank = {"ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"};
-		int[] pointValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		int[] pointValues = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14};
 		Deck deckOfCards = new Deck(suits, rank, pointValues);
 		ElevensBoard board = new ElevensBoard(deckOfCards);
 		PushButtonSubmit submitButton = new PushButtonSubmit(board);

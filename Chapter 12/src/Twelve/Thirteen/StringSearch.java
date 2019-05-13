@@ -22,7 +22,7 @@ public class StringSearch
 		Scanner userInput = new Scanner(System.in);
 		
 		// Ask the user to input multiple strings until the program is instructed to stop.
-		System.out.println("Enter one string per line for any amount of lines. (enter black string to stop)");
+		System.out.println("Enter one string per line for any amount of lines. (enter blank string to stop)");
 		while (keepReceivingInput)
 		{
 			// Ask the user for a string and store it.

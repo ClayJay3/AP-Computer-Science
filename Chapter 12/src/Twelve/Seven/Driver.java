@@ -17,10 +17,7 @@ public class Driver
 		System.out.println("Enter the amount of blurbs you want to make:");
 		numberOfBlurbs = userInput.nextInt();
 		
-		for (int i = 0; i < numberOfBlurbs; i++)
-		{
-			blurb.setLength(rand.nextInt(10) + 1);
-			System.out.println(blurb.Blarble());
-		}
+		blurb.setLength(numberOfBlurbs);
+		System.out.println(blurb.Blarble());
 	}
 }

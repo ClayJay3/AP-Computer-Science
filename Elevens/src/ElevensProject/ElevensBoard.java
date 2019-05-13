@@ -324,7 +324,7 @@ public class ElevensBoard extends JPanel
 			case 12:
 				rank = "12";
 				break;
-			case 13:
+			case 14:
 				rank = "13";
 				break;
 		}

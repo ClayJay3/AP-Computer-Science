@@ -90,7 +90,7 @@ public class PushButtonSubmit extends JPanel
 			}
 			else
 			{
-				if (board.getNumberOfCards() == 3 && board.getSelectedPointValue() == 36)
+				if (board.getNumberOfCards() == 3 && board.getSelectedPointValue() == 37)
 				{
 					// PRINT DEBUG
 					System.out.println("Cards Submitted!");

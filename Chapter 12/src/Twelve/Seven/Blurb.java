@@ -4,6 +4,11 @@ import java.util.Random;
 
 public class Blurb
 {
+	/*
+	 * xy*(q[ad]xy*)+
+	 */
+	
+	
 	// Create objects and variables.
 	private int length = 0;
 	Random rand = new Random();
@@ -20,11 +25,12 @@ public class Blurb
 		// Create and assign variables.
 		String result = "";
 		
+		result += Whoozit();
+		
 		// Create the blurb by calling other methods. (whoozit and whatzit)
 		if (length > 0)
 		{
 			length--;
-			result += Whoozit();
 			result += Whatzit();
 		}
 		
